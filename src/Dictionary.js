@@ -8,7 +8,6 @@ export default function Dictionary() {
   let [results, setResults] = useState(null);
 
   function handleResponse(response) {
-    console.log(response.data[0]);
     setResults(response.data[0]);
   }
 
@@ -16,9 +15,8 @@ export default function Dictionary() {
     event.preventDefault();
 
     // documentation: https://api.dictionaryapi.dev/
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
-    console.log(apiUrl);
-    axios.get(apiUrl).then(handleResponse);
+     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
+     axios.get(apiUrl).then(handleResponse);
   }
 
   function handleKeywordChange(event) {
@@ -30,7 +28,6 @@ export default function Dictionary() {
       <form onSubmit={search}>
         <input type="search" onChange={handleKeywordChange} />
       </form>
-
       <Results results={results} />
     </div>
   );
